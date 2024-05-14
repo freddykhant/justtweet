@@ -12,23 +12,7 @@ function App() {
     <>
       <NavbarComponent />
       <ProfileCover />
-      <div className="container">
-        <div className="row">
-          <div className="col-3">
-            <ProfileInfo />
-          </div>
-          <div className="col-6">
-            <ProfileStats />
-            <NewTweet />
-            <TweetCard />
-            <TweetCard />
-            <TweetCard />
-          </div>
-          <div className="col-3">
-            <RightPanel />
-          </div>
-        </div>
-      </div>
+      <ProfileStats />
     </>
   );
 }

@@ -36,3 +36,16 @@
     transform: rotate(360deg);
   }
 }
+
+/* profilecover */
+.profile-cover {
+  position: relative;
+  width: 100%;
+  height: 100%; /* Adjust the height as needed */
+  overflow: hidden;
+}
+
+.cover-image {
+  width: 100%;
+  height: auto;
+}
