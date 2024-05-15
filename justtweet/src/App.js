@@ -8,11 +8,23 @@ import TweetCard from './components/tweetcard';
 import RightPanel from './components/rightpanel';
 
 function App() {
+
+  const tweets = [
+    { username: 'Freddy Khant', handle: 'freddykhant', content: 'I love React!' },
+    { username: 'Sheik Fattah', handle: 'drsheikfattah', content: 'Hello Twitter!' }
+  ];
+
   return (
     <>
       <NavbarComponent />
       <ProfileCover />
       <ProfileStats />
+      <div className="container">
+        <NewTweet />
+        {tweets.map((tweet, index) => (
+          <TweetCard key={index} tweet={tweet} />
+        ))}
+      </div>
     </>
   );
 }
