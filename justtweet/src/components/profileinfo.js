@@ -9,7 +9,17 @@ class ProfileInfo extends Component {
           <Card.Title>Freddy Khant</Card.Title>
           <Card.Subtitle className="mb-2 text-muted">@freddykhant</Card.Subtitle>
           <Card.Text>
-            Bio: Passionate Computer Science Student that loves to build cool stuff.
+            Passionate Computer Science Student that loves to build cool stuff.
+          </Card.Text>
+          <Card.Text>
+            <a href="https://github.com/freddykhant" target="_blank" rel="noopener noreferrer">
+            https://github.com/freddykhant
+            </a>
+          </Card.Text>
+          <Card.Text>
+            <a href="https://www.google.com/maps/place/Perth,+WA" target="_blank" rel="noopener noreferrer">
+              Perth, WA
+            </a>
           </Card.Text>
         </Card.Body>
       </Card>
