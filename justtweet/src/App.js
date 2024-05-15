@@ -13,7 +13,8 @@ class App extends Component {
     this.state = {
       tweets : [
         { username: 'Freddy Khant', handle: 'freddykhant', content: 'I love React!' },
-        { username: 'Sheik Fattah', handle: 'drsheikfattah', content: 'Hello Twitter!' }
+        { username: 'Sheik Fattah', handle: 'drsheikfattah', content: 'Hello Twitter!' },
+        { username: 'Mark Zuckerberg', handle: 'finkd', content: 'The Metaverse is near' }
       ]
     };
     this.addTweet = this.addTweet.bind(this);
