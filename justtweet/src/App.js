@@ -12,9 +12,9 @@ class App extends Component {
     super(props)
     this.state = {
       tweets : [
-        { username: 'Freddy Khant', handle: 'freddykhant', content: 'I love React!' },
-        { username: 'Sheik Fattah', handle: 'drsheikfattah', content: 'Hello Twitter!' },
-        { username: 'Mark Zuckerberg', handle: 'finkd', content: 'The Metaverse is near' }
+        { content: "Can't wait to get my exams done." },
+        { content: 'I love React!' },
+        { content: 'Good Morning Twitter 😁' }
       ]
     };
     this.addTweet = this.addTweet.bind(this);
@@ -22,8 +22,6 @@ class App extends Component {
 
   addTweet(content) {
     const newTweet = {
-      username: 'Freddy Khant',
-      handle: 'freddykhant',
       content: content
     };
     this.setState({tweets: [newTweet, ...this.state.tweets]});

@@ -7,8 +7,8 @@ class TweetCard extends Component {
     return (
       <Card className="mb-3">
         <Card.Body>
-          <Card.Title>{tweet.username}</Card.Title>
-          <Card.Subtitle className="mb-2 text-muted">@{tweet.handle}</Card.Subtitle>
+          <Card.Title>Freddy Khant</Card.Title>
+          <Card.Subtitle className="mb-2 text-muted">@freddykhant</Card.Subtitle>
           <Card.Text>
             {tweet.content}
           </Card.Text>
