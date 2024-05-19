@@ -20,10 +20,10 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.fetchTweets();
+    this.getTweets();
   }
 
-  async fetchTweets() {
+  async getTweets() {
     try {
       const response = await axios.get('http://localhost:5001/tweets');
       this.setState({ tweets: response.data });
