@@ -14,19 +14,22 @@ class TweetCard extends Component {
   }
 
   render() {
+    const { tweet, onDelete } = this.props;
     return (
       <Card className="mb-3">
         <Card.Body>
-          <Card.Title>{this.state.name}</Card.Title>
-          <Card.Subtitle className="mb-2 text-muted">@{this.state.username} - {this.state.date}</Card.Subtitle>
-          <Card.Text>{this.state.tweetDesc}</Card.Text>
-          <Button
-            variant="link"
-            className="float-right"
-            onClick={() => this.props.onDelete(this.state.id)}
-          >
-            Delete
-          </Button>
+          <Card.Title>{tweet.name}</Card.Title>
+          <Card.Subtitle className="mb-2 text-muted">{tweet.username} - {tweet.date}</Card.Subtitle>
+          <Card.Text>{tweet.tweetDesc}</Card.Text>
+          <span>
+            <Button
+              onClick={() => onDelete(tweet.id)}
+              variant="danger"
+              className="float-right"
+            >
+            delete
+            </Button>
+          </span>
         </Card.Body>
       </Card>
     );

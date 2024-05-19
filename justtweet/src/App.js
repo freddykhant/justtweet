@@ -28,7 +28,7 @@ class App extends Component {
       id: this.state.tweets.length + 1,
       name: 'Freddy Khant', 
       username: 'freddykhant',
-      date: new Date().toLocaleDateString("en-US", { day: 'numeric', month: 'long', year: 'numeric' }),
+      date: new Date().toLocaleDateString("en-AU", { day: 'numeric', month: 'long', year: 'numeric' }),
       tweetDesc: content
     };
     this.setState({ tweets: [newTweet, ...this.state.tweets] });

@@ -5,35 +5,33 @@ class NewTweet extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      content: ''
+      tweetContent: ''
     };
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleTweetDescChange = this.handleTweetDescChange.bind(this);
   }
 
   handleChange(event) {
-    this.setState({ content: event.target.value });
+    this.setState({ tweetContent: event.target.value });
   }
 
-  handleSubmit(event) {
+  handleTweetDescChange(event) {
     event.preventDefault();
-    if (this.state.content.trim() !== '') {
-      this.props.onTweet(this.state.content);
-      this.setState({ content: '' });
-    }
+    this.props.onTweet(this.state.tweetContent);
+    this.setState({ tweetContent: '' });
   }
 
   render() {
     return (
       <Card className="mb-3">
         <Card.Body>
-          <Form onSubmit={this.handleSubmit}>
-            <Form.Group controlId="content">
+          <Form onSubmit={this.handleTweetDescChange}>
+            <Form.Group controlId="tweetContent">
               <Form.Label>What's happening?</Form.Label>
               <Form.Control
                 as="textarea"
                 rows={3}
-                value={this.state.content}
+                value={this.state.tweetContent}
                 onChange={this.handleChange}
                 placeholder="Enter your tweet"
               />
