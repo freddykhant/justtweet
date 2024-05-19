@@ -13,25 +13,29 @@ class App extends Component {
     super(props);
     this.state = {
       tweets: [
-        { id: 1, name: 'Freddy Khant', username: 'freddykhant', date: 'Nov 20', tweetDesc: 'Hello World!!' },
-        { id: 2, name: 'Freddy Khant', username: 'freddykhant', date: 'Dec 20', tweetDesc: 'Good morning Twitter 😁' },
-        { id: 3, name: 'Freddy Khant', username: 'freddykhant', date: 'Dec 20', tweetDesc: 'I love React.' },
-        { id: 4, name: 'Freddy Khant', username: 'freddykhant', date: 'Jan 21', tweetDesc: "Can't wait to get my exams done" }
+        { id: 1, name: 'Freddy Khant', username: 'freddykhant', date: 'November 19, 2023', tweetDesc: 'Hello World!!' },
+        { id: 2, name: 'Freddy Khant', username: 'freddykhant', date: 'December 23, 2023', tweetDesc: 'Good morning Twitter 😁' },
+        { id: 3, name: 'Freddy Khant', username: 'freddykhant', date: 'April 3, 2024', tweetDesc: 'I love React.' },
+        { id: 4, name: 'Freddy Khant', username: 'freddykhant', date: 'May 12, 2024', tweetDesc: "Can't wait to get my exams done" }
       ]
     };
-    this.addTweet = this.addTweet.bind(this);
+    this.handleNewTweet = this.handleNewTweet.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
   }
 
-  addTweet(content) {
-    const newTweet = {
-      id: this.state.tweets.length + 1,
-      name: 'Freddy Khant', 
-      username: 'freddykhant',
-      date: new Date().toLocaleDateString("en-AU", { day: 'numeric', month: 'long', year: 'numeric' }),
-      tweetDesc: content
-    };
-    this.setState({ tweets: [newTweet, ...this.state.tweets] });
+  handleNewTweet(newTweet) {
+    this.setState({
+      tweets: [
+        ...this.state.tweets,
+        {
+          id: this.state.tweets.length + 1,
+          name: 'Freddy Khant',
+          username: 'freddykhant',
+          date: new Date().toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' }),
+          tweetDesc: newTweet
+        }
+      ]
+    });
   }
 
   handleDelete(tweetID) {
@@ -51,7 +55,7 @@ class App extends Component {
               <ProfileInfo />
             </div>
             <div className="col-md-6">
-              <NewTweet onTweet={this.addTweet} />
+              <NewTweet onTweet={this.handleNewTweet} />
               {this.state.tweets.map((tweet) => (
                 <TweetCard key={tweet.id} tweet={tweet} onDelete={this.handleDelete} />
               ))}
