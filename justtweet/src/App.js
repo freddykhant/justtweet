@@ -6,41 +6,53 @@ import ProfileInfo from './components/profileinfo';
 import NewTweet from './components/newtweet';
 import TweetCard from './components/tweetcard';
 import RightPanel from './components/rightpanel';
+import axios from 'axios';
 import './App.css';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tweets: [
-        { id: 1, name: 'Freddy Khant', username: 'freddykhant', date: 'November 19, 2023', tweetDesc: 'Hello World!!' },
-        { id: 2, name: 'Freddy Khant', username: 'freddykhant', date: 'December 23, 2023', tweetDesc: 'Good morning Twitter 😁' },
-        { id: 3, name: 'Freddy Khant', username: 'freddykhant', date: 'April 3, 2024', tweetDesc: 'I love React.' },
-        { id: 4, name: 'Freddy Khant', username: 'freddykhant', date: 'May 12, 2024', tweetDesc: "Can't wait to get my exams done" }
-      ]
+      tweets: []
     };
     this.handleNewTweet = this.handleNewTweet.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
   }
 
-  handleNewTweet(newTweet) {
-    this.setState({
-      tweets: [
-        ...this.state.tweets,
-        {
-          id: this.state.tweets.length + 1,
-          name: 'Freddy Khant',
-          username: 'freddykhant',
-          date: new Date().toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' }),
-          tweetDesc: newTweet
-        }
-      ]
-    });
+  componentDidMount() {
+    this.fetchTweets();
   }
 
-  handleDelete(tweetID) {
-    const tweets = this.state.tweets.filter(tweet => tweet.id !== tweetID);
-    this.setState({ tweets: tweets });
+  async fetchTweets() {
+    try {
+      const response = await axios.get('http://localhost:5001/tweets');
+      this.setState({ tweets: response.data });
+    } catch (error) {
+      console.error('Error fetching tweets:', error);
+    }
+  }
+
+  async handleNewTweet(newTweet) {
+    try {
+      const response = await axios.post('http://localhost:5001/tweets', {
+        name: 'Freddy Khant',
+        username: 'freddykhant',
+        date: new Date().toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' }),
+        tweetDesc: newTweet
+      });
+      this.setState({ tweets: [response.data, ...this.state.tweets] });
+    } catch (error) {
+      console.error('Error posting tweet:', error);
+    }
+  }
+
+  async handleDelete(tweetID) {
+    try {
+      await axios.delete(`http://localhost:5001/tweets/${tweetID}`);
+      this.setState({ tweets: this.state.tweets.filter(tweet => tweet._id !== tweetID) });
+    } catch (error) {
+      console.error('Error deleting tweet:', error);
+    }
   }
 
   render() {
@@ -57,7 +69,7 @@ class App extends Component {
             <div className="col-md-6">
               <NewTweet onTweet={this.handleNewTweet} />
               {this.state.tweets.map((tweet) => (
-                <TweetCard key={tweet.id} tweet={tweet} onDelete={this.handleDelete} />
+                <TweetCard key={tweet._id} tweet={tweet} onDelete={this.handleDelete} />
               ))}
             </div>
             <div className="col-md-3">

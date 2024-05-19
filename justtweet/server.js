@@ -39,7 +39,6 @@ app.delete('/tweets/:id', (req, res) => {
     .catch(err => res.status(500).json({ error: err.message }));
 });
 
-const port = 5000;
-app.listen(port, () => {
-  console.log(`Listening on port ${port}`);
+app.listen(5001, () => {
+  console.log(`Listening on port 5001`);
 });

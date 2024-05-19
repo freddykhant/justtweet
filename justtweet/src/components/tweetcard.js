@@ -2,17 +2,6 @@ import React, { Component } from 'react';
 import { Card, Button } from 'react-bootstrap';
 
 class TweetCard extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      id: this.props.tweet.id,
-      name: this.props.tweet.name,
-      username: this.props.tweet.username,
-      date: this.props.tweet.date,
-      tweetDesc: this.props.tweet.tweetDesc
-    };
-  }
-
   render() {
     const { tweet, onDelete } = this.props;
     return (
@@ -23,11 +12,11 @@ class TweetCard extends Component {
           <Card.Text>{tweet.tweetDesc}</Card.Text>
           <span>
             <Button
-              onClick={() => onDelete(tweet.id)}
+              onClick={() => onDelete(tweet._id)}
               variant="danger"
               className="float-right"
             >
-            delete
+              Delete
             </Button>
           </span>
         </Card.Body>
